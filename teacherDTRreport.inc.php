@@ -47,9 +47,10 @@ else{
 			
 			<div class="row row-toolbar">
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-push-8 col-md-push-8 col-sm-push-8 col-xs-push-8 clearfix"></div>
-	
+
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-pull-4 col-md-pull-4 col-sm-pull-4 col-xs-pull-4">
-                <select <?php echo($_SESSION["user_role"]==2?"disabled":($_SESSION["user_role"]==3?"disabled":""));?> class="form-control" id="ui-classes" style="margin-top: 5px" onchange="if (this.value) window.location.href=this.value">
+               	<!--
+				<select <?php echo($_SESSION["user_role"]==2?"disabled":($_SESSION["user_role"]==3?"disabled":""));?> class="form-control" id="ui-classes" style="margin-top: 5px" onchange="if (this.value) window.location.href=this.value">
 					<option value=".?page=teacher&reports=0&year=<?php echo $_GET['year'];?>&month=<?php echo $_GET['month'];?>&day=<?php echo $_GET['day'];?>">---select---</option>
 					<option value=".?page=teacher&reports=0&year=<?php echo $_GET['year'];?>&month=<?php echo $_GET['month'];?>&day=<?php echo $_GET['day'];?>">***DISPLAY ALL***</option>
 					<?php
@@ -59,8 +60,9 @@ else{
 						<option value=".?page=teacher&reports=<?php echo $dataFaculty['teach_no']; ?>&year=<?php echo $_GET['year'];?>&month=<?php echo $_GET['month'];?>&day=<?php echo $_GET['day'];?>" <?php echo ($dataFaculty['teach_no']==$_GET['reports']?"selected":"");?>><?php echo strtoupper($dataFaculty['teach_lname'].", ".$dataFaculty['teach_fname']); ?></option>
 					<?php } ?>	
                 </select>
-
+				-->
           </div>
+					
 		</div>	
 
 		

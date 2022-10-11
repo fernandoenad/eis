@@ -90,10 +90,10 @@ else{
 					<div  class="tabbable"><br>
 						<ul class="nav nav-tabs">
 							<li class="<?php echo ($_GET['tab']=="info"?"active":"");?>" ><a href="?page=teacher&showProfile=<?php echo $_GET['showProfile'];?>&tab=info">Personnel Data</a></li>
-							<li class="<?php echo ($_GET['tab']=="ids"?"active":"");?>"><a href="?page=teacher&showProfile=<?php echo $_GET['showProfile'];?>&tab=ids">Personnel IDs</a></li>
-							<li class="<?php echo ($_GET['tab']=="education"?"active":"");?>"><a href="?page=teacher&showProfile=<?php echo $_GET['showProfile'];?>&tab=education">Educational Background</a></li>
-							<li class="<?php echo ($_GET['tab']=="appointments"?"active":"");?>"><a href="?page=teacher&showProfile=<?php echo $_GET['showProfile'];?>&tab=appointments">Appointments & Designations</a></li>
-							<li class="<?php echo ($_GET['tab']=="201"?"active":"");?>"><a href="?page=teacher&showProfile=<?php echo $_GET['showProfile'];?>&tab=201">201 Remarks</a></li>
+							<li class="<?php echo ($_GET['tab']=="ids"?"active":"");?>"><a href="?page=teacher&showProfile=<?php echo $_GET['showProfile'];?>&tab=ids">DTR Related</a></li>
+							<!-- <li class="<?php echo ($_GET['tab']=="education"?"active":"");?>"><a href="?page=teacher&showProfile=<?php echo $_GET['showProfile'];?>&tab=education">Educational Background</a></li>-->
+							<!-- <li class="<?php echo ($_GET['tab']=="appointments"?"active":"");?>"><a href="?page=teacher&showProfile=<?php echo $_GET['showProfile'];?>&tab=appointments">Appointments & Designations</a></li>-->
+							<!-- <li class="<?php echo ($_GET['tab']=="201"?"active":"");?>"><a href="?page=teacher&showProfile=<?php echo $_GET['showProfile'];?>&tab=201">201 Remarks</a></li>-->
 						</ul>
 						
 						<div class="tab-content">
@@ -168,10 +168,7 @@ else{
 															<td>Civil Status</td>
 															<td><?php echo $data['teach_cstatus'];?></td>
 														</tr>														
-														<tr>
-															<td>Tax Identification Number</td>
-															<td><?php echo $data['teach_tin'];?></td>
-														</tr>
+							
 														<tr>
 															<td>Contact Number</td>
 															<td><?php echo $data['teach_dialect'];?></td>
@@ -208,28 +205,30 @@ else{
 										<div class="panel panel-default">
 											<div class="panel-heading">
 											    <div class="btn-toolbar  pull-right">
-													<a <?php echo ($_SESSION["user_role"]==3?"disabled=disabled":"");?> href="teacherIDNew.frm.php?stud_no=<?php echo $_GET['showProfile'];?>" title="Add New" data-toggle="modal" data-target="#modal-medium"  data-backdrop="static" data-keyboard="false" class="btn  btn-xs  btn-default">
-														<span class="glyphicon glyphicon-plus"></span></a>
+													<!-- <a <?php echo ($_SESSION["user_role"]==3?"disabled=disabled":"");?> href="teacherIDNew.frm.php?stud_no=<?php echo $_GET['showProfile'];?>" title="Add New" data-toggle="modal" data-target="#modal-medium"  data-backdrop="static" data-keyboard="false" class="btn  btn-xs  btn-default">
+														<span class="glyphicon glyphicon-plus"></span></a> -->
 												</div>
-												Personal Identification
+												DTR Information
 											</div>
 											<div class="table-responsive">
 												<table class="table table-bordered table-condensed table-striped table-sticky" style="margin-bottom:20px !important">
 													<thead>
 														<tr>
-															<th width="20%">Fields</th>
-															<th>Details</th>
-															<th>Date Issued</th>
-															<th>Place Issued</th>
+															<th width="15%">Biometric ID</th>
+															<th>Supervisor</th>
+															<th width="35%">Section/Unit</th>
 															<th width="10%"></th>
 														</tr>
 													</thead>
 													<tbody> 
 														<tr>
-															<td>Biometric ID</td>
 															<td><?php echo $data['teach_bio_no'];?></td>
+															<?php
+																$checkSupervisor = dbquery("SELECT * FROM teacher WHERE teach_no='".$data['teach_tin']."'");
+																$dataSupervisor = dbarray($checkSupervisor);
+															?>
+															<td><?php echo $dataSupervisor['teach_lname'] . ", ". $dataSupervisor['teach_fname'];?></td>
 															<td>-</td>
-															<td><?php echo $current_school_full;?></td>
 															<td><a <?php echo ($_SESSION["user_role"]==2?"disabled":"");?> href="teacherBioIDUpdate.frm.php?teach_no=<?php echo $data['teach_no']; ?>" title="Update" data-toggle="modal" data-target="#modal-medium" data-backdrop="static" data-keyboard="false" class="btn  btn-xs  btn-default">
 																<span class="glyphicon glyphicon-pencil"></span></a></td>
 														</tr>
@@ -258,6 +257,7 @@ else{
 
 									</div>
 								</div>
+								
 							</div>	
 							<div class="<?php echo ($_GET['tab']=="appointments"?"tab-pane active":"tab-pane");?>" id="appointments">
 								<div class="row-fluid">

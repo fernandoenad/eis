@@ -51,7 +51,6 @@ else{
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-pull-4 col-md-pull-4 col-sm-pull-4 col-xs-pull-4">
                 <select <?php echo($_SESSION["user_role"]==2?"disabled":($_SESSION["user_role"]==3?"disabled":""));?> class="form-control" id="ui-classes" style="margin-top: 5px" onchange="if (this.value) window.location.href=this.value">
 					
-					<option value=".?page=teacher&showDTR=0&year=<?php echo $_GET['year'];?>&month=<?php echo $_GET['month'];?>">---select---</option>
 					<option value=".?page=teacher&showDTR=0&year=<?php echo $_GET['year'];?>&month=<?php echo $_GET['month'];?>">***DISPLAY ALL***</option>
 					<?php
 					$checkFaculty = dbquery("SELECT * FROM teacher where teach_status=1 ORDER BY teach_lname ASC, teach_fname asc");
@@ -211,7 +210,8 @@ else{
 													<?php
 													$startStamp = $_GET['year']."-".$_GET['month']."-01";
 													$endStamp = $_GET['year']."-".$_GET['month']."-31";
-													$checkMissingLogsApp = dbquery("select * from missinglogs where (ml_userid='".$data['teach_bio_no']."' and ml_checkdate between '$startStamp' and '$endStamp') order by ml_approve_user_no asc, ml_apply_regdatetime desc limit 0,120");
+													$teach_bio_no = (isset($data['teach_bio_no']) ? $data['teach_bio_no'] : 0);
+													$checkMissingLogsApp = dbquery("select * from missinglogs where (ml_userid='".$teach_bio_no."' and ml_checkdate between '$startStamp' and '$endStamp') order by ml_approve_user_no asc, ml_apply_regdatetime desc limit 0,120");
 													while($dataMissingLogsApp = dbarray($checkMissingLogsApp)){
 													?>
 														<tr>

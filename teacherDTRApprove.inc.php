@@ -24,7 +24,7 @@
 					$checkFaculty = dbquery("SELECT * FROM teacher ORDER BY teach_lname ASC, teach_fname asc");
 					while($dataFaculty=dbarray($checkFaculty)){
 					?>
-						<option value=".?page=teacher&approveDTR&userid=<?php echo $dataFaculty['teach_bio_no']; ?>" <?php echo ($dataFaculty['teach_bio_no']==$_GET['userid']?"selected":"");?>><?php echo $dataFaculty['teach_lname'].", ".$dataFaculty['teach_fname']; ?></option>
+						<option value=".?page=teacher&approveDTR&userid=<?php echo $dataFaculty['teach_bio_no']; ?>&filter=all" <?php echo ($dataFaculty['teach_bio_no']==(isset($_GET['userid']) ? $_GET['userid'] : "")?"selected":"");?>><?php echo $dataFaculty['teach_lname'].", ".$dataFaculty['teach_fname']; ?></option>
 					<?php } ?>
 					</optgroup> 	
                 </select>

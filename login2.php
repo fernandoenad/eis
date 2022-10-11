@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
 	else{
 		$resultChangefullname = dbquery("UPDATE users SET user_pass='".$password."' WHERE user_name='".$_SESSION["user_name"]."'");
 		// $_SESSION["user_fullname"] = $_POST['user_fullname'];
-		header("Location: ./?page=teacher&teacher=yes&showProfile=".$_SESSION['userid']."&tab=info");
+		header("Location: ./?page=teacher&teacher=yes&showProfile=".$_SESSION['userid']."&tab=ids");
 	}
 }
 

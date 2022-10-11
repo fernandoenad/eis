@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
 		if($_SESSION["userid"]==1)
 			header("Location: ./?page=teacher&display=active");
 		else
-			header("Location: ./?page=teacher&teacher=yes&showProfile=".$_SESSION['userid']."&tab=info");
+			header("Location: ./?page=teacher&teacher=yes&showProfile=".$_SESSION['userid']."&tab=ids");
 	}
 	
 	else{
@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
     <meta name="author" content="Fernando B. Enad">
 	<meta name="keywords" content="San Agustin NHS, San Agustin National High School">
     <link rel="icon" href="./assets/images/seal.png">
-    <title><?php echo $current_school_short;?> EI-DTR Login Form</title>
+    <title><?php echo $app_name ;?> | Login Form</title>
 	
     <!-- Bootstrap -->
     <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -105,7 +105,7 @@ if(isset($_POST['submit'])){
 					<span class="navbar-brand">
 						<img class="logo" src="./assets/images/sanhs_logo.png" alt="SANHS" style="height: 20px; margin-top: -2px"/>
 					</span>
-					<span class="navbar-brand"><?php echo $current_school_short;?> Management Information System</span>
+					<span class="navbar-brand"><?php echo $app_name ;?></span>
 				</div>
 				
 
@@ -144,7 +144,7 @@ if(isset($_POST['submit'])){
 	
 	<div id="footer">
 		<div class="container">
-			<p class="text-muted" style="margin-top:20px"><small> Copyright &copy; 2016. <a href="">School Management Information System</a> by <a href="mailto:fernando.enad@deped.gov.ph">Fernando B. Enad</a> (San Agustin NHS - Sagbayan, Bohol).</small></p>
+			<p class="text-muted" style="margin-top:20px"><small> Copyright &copy; 2022. <a href=""><?php echo $app_fullname ;?></a> by <a href="mailto:fernando.enad@deped.gov.ph">Fernando B. Enad</a> (San Agustin NHS - Sagbayan, Bohol).</small></p>
 		</div>
 	</div>
 
@@ -195,7 +195,7 @@ if(isset($_POST['submit'])){
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i>Welcome to <?php echo $current_school_short;?> EIS-DTR!</h4>
+          <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i>Welcome to <?php echo $app_name;?>!</h4>
         </div>
         <div class="modal-body">
 		<strong>Announcements...</strong><br><small>
@@ -205,12 +205,38 @@ if(isset($_POST['submit'])){
         <hr>  
 		<strong>Birthday Celebrants...</strong><br>
 		<?php
+		$today = date("m-d");
+		$checkStudentBdays = dbquery("select * from teacher where teach_status='1'");
+		$countStudentBdays = dbrows($checkStudentBdays);
+		if($countStudentBdays>1){
+		?>
+		<small><u>Today's Celebrant(s):</u>
+		<ol>
+			<?php
+			while($dataStudentBirthdays=dbarray($checkStudentBdays)){
+				if(substr($dataStudentBirthdays['teach_bdate'],5,5)==$today){
+					?>
+					<li>
+						<?php echo $dataStudentBirthdays['teach_fname']." ".($dataStudentBirthdays['teach_mname']=="-"?"":substr($dataStudentBirthdays['teach_mname'],0,1).".")." ".$dataStudentBirthdays['teach_lname'];?>
+						<!-- <i>(<?php echo $dataStudentBirthdays['enrol_level']." - ".$dataStudentBirthdays['enrol_section'];?>)</i>-->
+					</li>
+					<?php
+				}
+			}
+			?>	
+		</ol>
+		</small>
+		<?php
+		}
+		?>
+
+		<?php
 		$today = date("m");
 		$checkTeacherBdays = dbquery("select * from teacher where teach_status='1'");
 		$countTeacherBdays = dbrows($checkTeacherBdays);
 		if($countTeacherBdays>1){
 		?>
-		<small><u><?php echo date("F Y");?>'s Teacher-Celebrant(s) :</u>
+		<small><u><?php echo date("F Y");?> Celebrant(s) :</u>
 		<ol>
 			<?php
 			while($dataTeacherBirthdays=dbarray($checkTeacherBdays)){
@@ -218,7 +244,6 @@ if(isset($_POST['submit'])){
 					?>
 					<li>
 						<?php echo strtoupper($dataTeacherBirthdays['teach_fname']." ".($dataTeacherBirthdays['teach_mname']=="-"?"":substr($dataTeacherBirthdays['teach_mname'],0,1).".")." ".$dataTeacherBirthdays['teach_lname']);?>
-						<i>(<?php echo date('F d, Y', strtotime($dataTeacherBirthdays['teach_bdate']));?>)</i>
 					</li>
 					<?php
 				}
@@ -229,31 +254,7 @@ if(isset($_POST['submit'])){
 		<?php
 		}
 		?>
-		<?php
-		$today = date("m-d");
-		$checkStudentBdays = dbquery("select * from student inner join studenroll on stud_no = enrol_stud_no where (enrol_sy='".$current_sy."')");
-		$countStudentBdays = dbrows($checkStudentBdays);
-		if($countStudentBdays>1){
-		?>
-		<small><u>Today's Student-Celebrant(s):</u>
-		<ol>
-			<?php
-			while($dataStudentBirthdays=dbarray($checkStudentBdays)){
-				if(substr($dataStudentBirthdays['stud_bdate'],5,5)==$today){
-					?>
-					<li>
-						<?php echo $dataStudentBirthdays['stud_fname']." ".($dataStudentBirthdays['stud_mname']=="-"?"":substr($dataStudentBirthdays['stud_mname'],0,1).".")." ".$dataStudentBirthdays['stud_lname'];?>
-						<i>(<?php echo $dataStudentBirthdays['enrol_level']." - ".$dataStudentBirthdays['enrol_section'];?>)</i>
-					</li>
-					<?php
-				}
-			}
-			?>	
-		</ol>
-		</small>
-		<?php
-		}
-		?>
+		
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

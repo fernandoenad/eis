@@ -18,8 +18,7 @@ if(!isset($_SESSION["user_logged"])){
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
 	<link rel="icon" href="./assets/images/seal.png">
-    <title><?php echo $current_school_short;?> EIS- <?php echo $_SESSION["user_fullname"];?> </title>
-                
+    <title><?php echo $app_name ;?> | <?php echo $_SESSION["user_fullname"];?> </title>
 	
     <!-- Bootstrap -->
     <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -208,7 +207,7 @@ if(!isset($_SESSION["user_logged"])){
 					<span class="navbar-brand">
 						<img class="logo" src="./assets/images/sanhs_logo.png" alt="SANHS" style="height: 20px; margin-top: -2px"/>
 					</span>
-					<span class="navbar-brand"><?php echo $current_school_short;?> EIS-DTR</span>
+					<span class="navbar-brand"><?php echo $app_name ;?></span>
 				</div>
 				
 				<div class="navbar-collapse collapse">
@@ -234,7 +233,7 @@ if(!isset($_SESSION["user_logged"])){
 									<li><a href="./?page=teacher&createProfile" >New Profile</a></li>
 									<li class="divider"></li>
 									<li class="dropdown-header">DTR</li>
-									<li><a href="./?page=teacher&showDTR=<?php echo $_SESSION['userid'];?>&year=<?php echo date('Y');?>&month=<?php echo date('m');?>">DTR Dashboard</a></li>	
+									<li><a href="./?page=teacher&showDTR=<?php echo ($_SESSION['userid'] == 1 ? 0 : $_SESSION['userid']);?>&year=<?php echo date('Y');?>&month=<?php echo date('m');?>">DTR Dashboard</a></li>	
 									<li><a href="./?page=teacher&approveDTR&filter=all">Approve Missing Logs</a></li>	
 									<li><a href="./?page=teacher&reports=0&year=<?php echo date('Y');?>&month=<?php echo date('m');?>&day=<?php echo date('d');?>">Attendance Reports</a></li>	
 									

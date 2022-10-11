@@ -1,6 +1,6 @@
 	<div id="footer">
 		<div class="container">
-			<p class="text-muted" style="margin-top:20px"><small> Copyright &copy; 2016. <a href="">Employee Information System-DTR</a> by <a href="mailto:fernando.enad@deped.gov.ph">Fernando B. Enad</a> (San Agustin NHS - Sagbayan, Bohol).</small></p>
+			<p class="text-muted" style="margin-top:20px"><small> Copyright &copy; 2022. <a href=""><?php echo $app_fullname ;?> </a> by <a href="mailto:fernando.enad@deped.gov.ph">Fernando B. Enad</a> (San Agustin NHS - Sagbayan, Bohol).</small></p>
 		</div>
 	</div>
 

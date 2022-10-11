@@ -147,17 +147,6 @@ else{
 	</div>
 
 	<div class="row">
-		<div class="col-lg-3 col-md-3">
-			<div class="panel panel-default">
-				<div class="panel-heading">Tax Identification Number</div>
-				<div class="panel-body">
-					<div class="form-group">
-						<label class="control-label" for="learner_update_religion">TIN #</label>
-						<input type="number" id="learner_update_residence" name="teach_tin" oninput="maxLengthCheck(this)" required="required" maxlength="9" min="0" max="999999999" class=" form-control" value="<?php echo $data['teach_tin']; ?>" style="text-transform:uppercase;">
-					</div>
-				</div>
-			</div>
-		</div>
 			
 		<div class="col-lg-3 col-md-3">
 			<div class="panel panel-default">
@@ -170,12 +159,30 @@ else{
 		</div>
 		
 
-		<div class="col-lg-6 col-md-6">
+		<div class="col-lg-4 col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">Electronic Mail Address</div>
 				<div class="panel-body ">
 					<label class="control-label" for="learner_update_residence">Email Address</label>
 					<input type="email" id="learner_update_residence" name="teach_ethnicity" required="required" class=" form-control" value="<?php echo strtoupper($data['teach_ethnicity']); ?>" style="text-transform:uppercase;">
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-5 col-md-5">
+			<div class="panel panel-default">
+				<div class="panel-heading">Supervisor Information</div>
+				<div class="panel-body">
+					<label class="control-label" for="learner_update_religion">Supervisor Name</label>
+					<select class="form-control" id="ui-classes" style="margin-top: 5px" name="teach_tin" required>
+						<option value="">---</value>
+						<?php
+						$checkFaculty = dbquery("SELECT * FROM teacher ORDER BY teach_lname ASC, teach_fname asc");
+						while($dataFaculty=dbarray($checkFaculty)){
+						?>
+							<option value="<?php echo $dataFaculty['teach_no'];?>" <?php echo ($dataFaculty['teach_no']==$data['teach_tin']?"selected":"");?>><?php echo $dataFaculty['teach_lname'].", ".$dataFaculty['teach_fname']; ?></option>
+						<?php } ?>
+					</select>
 				</div>
 			</div>
 		</div>

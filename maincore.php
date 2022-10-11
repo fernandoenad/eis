@@ -128,9 +128,6 @@ $current_footer = "Copyright &copy 2016. <a href=''>".$current_school_short." Em
 $current_footer_www = "Copyright &copy 2017. <a href=''>".$current_school_short." Portal</a>. All  rights reserved.";
 $current_footer_ams = "Copyright &copy 2017. <a href=''>".$current_school_short." Attendance Management System</a>. All  rights reserved.";
 
-
-
-
-
-
+$app_name = "EIS-DTR";
+$app_fullname = "SDO Bohol Employee Information System for Daily Time Record";
 ?>

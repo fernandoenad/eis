@@ -41,7 +41,10 @@ $dataTeacher = dbarray($checkTeacher);
 		font-size: 0.7em;		
 	}
 	</style>	
+
+	<script async src="//jsfiddle.net/afKUu/4/embed/"></script>
 </head>
+<body oncontextmenu="return false;">
 <br><br><br><br>
 <table border="0" cellspacing="0" cellpadding="1" width="800">
 <tr>
@@ -169,7 +172,11 @@ $dataTeacher = dbarray($checkTeacher);
 					$supervisor = $current_principal;					
 				}
 				?>
-				<strong><font size="2"><?php echo $supervisor;?></strong></font>
+				<?php 
+					$checkSupervisor = dbquery("SELECT * FROM teacher WHERE teach_no='".$dataTeacher['teach_tin']."'");
+					$dataSupervisor = dbarray($checkSupervisor);
+				?>
+				<strong><font size="2"><?php echo strtoupper($dataSupervisor['teach_fname']." ".substr($dataSupervisor['teach_mname'],0,1).($dataSupervisor['teach_mname']=="-"?"":".")." ".$dataSupervisor['teach_lname']." ".$dataSupervisor['teach_xname']);?></strong></font>
 				</td>
 			</tr>
 			<tr>
@@ -294,7 +301,7 @@ $dataTeacher = dbarray($checkTeacher);
 			<tr>
 				<td align="left" colspan="3" style=""></td>
 				<td align="center" colspan="4" style="BORDER-BOTTOM: black solid 1px">
-				<strong><font size="2"><?php echo $supervisor;?></strong></font>
+				<strong><font size="2"><?php echo strtoupper($dataSupervisor['teach_fname']." ".substr($dataSupervisor['teach_mname'],0,1).($dataSupervisor['teach_mname']=="-"?"":".")." ".$dataSupervisor['teach_lname']." ".$dataSupervisor['teach_xname']);?></strong></font>
 				</td>
 			</tr>
 			<tr>

@@ -92,12 +92,12 @@ else{
 						<thead>
 							<tr>
 								<th width="3%">#</th>
-								<th width="8%">DepEd ID</th>
+								<th width="7%">DepEd ID</th>
 								<th>Personnel</th>
 								<th width="7%">Gender</th>
-								<th>Birthday</th>
-								<th>Address</th>
-								<th width="10%">Position</th>
+								<th width="11%">Birthday</th>
+								<th>Reporting To</th>
+								<th width="8%">DTR Logs</th>
 								<th width="11%">&nbsp;</th>
 							</tr>
 						</thead>
@@ -109,7 +109,8 @@ else{
 						?>
 							<tr>
 								<td class="text-right"><?php echo ($pagenum-1)* $page_rows  +$i; ?></td>
-								<td><a href="#" onclick="window.open('teachPass.php?teach_no=<?php echo $data['teach_no']; ?>', 'newwindow', 'width=700, height=500'); return false;"><?php echo $data['teach_id']; ?></a></td>
+								<!-- <td><a href="#" onclick="window.open('teachPass.php?teach_no=<?php echo $data['teach_no']; ?>', 'newwindow', 'width=700, height=500'); return false;"><?php echo $data['teach_id']; ?></a></td>-->
+								<td><a <?php echo ($_SESSION["userid"]==$data['teach_no']?"":($_SESSION["user_role"]==1 || $_SESSION["user_role"]==3?"":"disabled"));?> href="./?page=teacher&showProfile=<?php echo $data['teach_no'];  ?>&tab=ids"><?php echo $data['teach_id']; ?></a></td>
 								<td><small><?php echo strtoupper($data['teach_lname']).", ".strtoupper($data['teach_fname'])." ".strtoupper($data['teach_xname'])." ".strtoupper($data['teach_mname']); ?></small></td>
 								<td><small><?php echo $data['teach_gender']; ?></small></td>
 								<?php
@@ -122,10 +123,15 @@ else{
 									echo $mysqldate = date('F d, Y', $phpdate);
 								?>
 								</small></td>
-								<td><small><small><?php echo $data['teach_residence'];?></small></small></td>
-								<td><small><small><?php echo (isset($rowAppointments['teacherappointments_position'])?$rowAppointments['teacherappointments_position']:"");?></small></small></td>
+								<?php 
+									$checkSupervisor = dbquery("SELECT * FROM teacher WHERE teach_no='".$data['teach_tin']."'");
+									$dataSupervisor = dbarray($checkSupervisor);
+								?>
+								<td><small><small><?php echo $dataSupervisor['teach_lname'] . ", " . $dataSupervisor['teach_fname'];?></small></small></td>
+								<td><a title="View DTR Logs" href="?page=teacher&showDTR=<?php echo $data['teach_no'];?>&year=<?php echo date('Y');?>&month=<?php echo date('m');?>">
+								<span class="glyphicon glyphicon-list"></span></a></td>
 								<td>
-								<a <?php echo ($_SESSION["userid"]==$data['teach_no']?"":($_SESSION["user_role"]==1 || $_SESSION["user_role"]==3?"":"disabled"));?> class="btn btn-default btn-xs" href="./?page=teacher&showProfile=<?php echo $data['teach_no'];  ?>&tab=info"><span class="glyphicon glyphicon-user"></span></a>
+								<!--<a <?php echo ($_SESSION["userid"]==$data['teach_no']?"":($_SESSION["user_role"]==1 || $_SESSION["user_role"]==3?"":"disabled"));?> class="btn btn-default btn-xs" href="./?page=teacher&showProfile=<?php echo $data['teach_no'];  ?>&tab=info"><span class="glyphicon glyphicon-user"></span></a>-->
 								<?php
 								$checkAdvisory=dbquery("select * from section where section_adviser='".$data['teach_no']."'");
 								$countAdvisory=dbrows($checkAdvisory);

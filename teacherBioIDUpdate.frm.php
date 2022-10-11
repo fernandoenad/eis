@@ -6,7 +6,7 @@ $dataAnec = dbarray($resultAnec);
 <div class="modal-content">
     <div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">Modify Identification</h4>
+		<h4 class="modal-title">Modify DTR Information</h4>
     </div>
 	<form method="post" action="teacherID.scr.php?UpdateBiometricID=Yes">
 	<input type="hidden" id="teach_no" name="teach_no" required="required" class=" form-control" value="<?php echo $_GET['teach_no'];?>">
@@ -15,16 +15,24 @@ $dataAnec = dbarray($resultAnec);
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
 					<div class="form-group">
-						<label class="control-label required" for="stud_lrn">ID Type <span title="Required" class="text-danger">*</span></label>
-						<input type="text" id="anec_date" name="anec_date" readonly required="required" class=" form-control" value="Biometric ID" >
+						<label class="control-label required" for="stud_lrn">Biometric ID Number <span title="Required" class="text-danger">*</span></label>
+						<input type="number" id="teach_bio_no" name="teach_bio_no"  required="required" class=" form-control" value="<?php echo $dataAnec['teach_bio_no'];?>" style="text-transform:uppercase;">
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
 					<div class="form-group">
-						<label class="control-label required" for="stud_lrn">ID Number <span title="Required" class="text-danger">*</span></label>
-						<input type="number" id="teach_bio_no" name="teach_bio_no"  required="required" class=" form-control" value="<?php echo $dataAnec['teach_bio_no'];?>" style="text-transform:uppercase;">
+						<label class="control-label required" for="stud_lrn">Supervisor <span title="Required" class="text-danger">*</span></label>
+						<select class="form-control" id="ui-classes" style="margin-top: 5px" name="teach_tin" required>
+							<option value="">---</value>
+							<?php
+							$checkFaculty = dbquery("SELECT * FROM teacher ORDER BY teach_lname ASC, teach_fname asc");
+							while($dataFaculty=dbarray($checkFaculty)){
+							?>
+								<option value="<?php echo $dataFaculty['teach_no'];?>" <?php echo ($dataFaculty['teach_no']==$dataAnec['teach_tin']?"selected":"");?>><?php echo $dataFaculty['teach_lname'].", ".$dataFaculty['teach_fname']; ?></option>
+							<?php } ?>
+						</select>					
 					</div>
 				</div>
 			</div>

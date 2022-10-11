@@ -64,21 +64,18 @@ $result = dbquery("SELECT * FROM teacher $filter ORDER BY teach_lname ASC, teach
 	</tr>
 </table>	
 
-<table border="1" cellspacing="0" cellpadding="0" width="1240">
+<table border="1" cellspacing="0" cellpadding="0" width="830">
 	<thead>
 		<tr align="left">
 			<th width="2%">#</th>
-			<th width="5%">DepEd ID</th>
-			<th>Teacher</th>
+			<th width="8%">DepEd ID</th>
+			<th>Personnel</th>
 			<th width="4%">Gender</th>
 			<th width="6%">Birthday</th>
 			<th width="15%">Address</th>
 			<th width="6%">Contact</th>
-			<th width="5%">Position</th>
-			<th width="10%">IDs</th>
-			<th width="15%">Educ'nl Backgrnds</th>
-			<th width="15%">Appointments & Designation </th>
-			<th width="15%">Schedule </th>
+			<th width="20%">Supervisor</th>
+			<th width="15%">Section/Unit</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -104,41 +101,19 @@ $result = dbquery("SELECT * FROM teacher $filter ORDER BY teach_lname ASC, teach
 			</small></td>
 			<td><small><?php echo $data['teach_residence'];?></small></td>
 			<td><small><?php echo $data['teach_dialect'];?></small></td>
-			<td><small><?php echo (isset($rowAppointments['teacherappointments_position'])?$rowAppointments['teacherappointments_position']:"");?></small></td>
 			<?php 
-			$value="";
-			$checkIDS=dbquery("select * from teacherids where teacherids_teach_no='".$data['teach_no']."'");
-			while($dataIDS = dbarray($checkIDS)){ $value.=$dataIDS['teacherids_id'].": ".$dataIDS['teacherids_details']."<br>";}
+				$checkSupervisor = dbquery("SELECT * FROM teacher WHERE teach_no='".$data['teach_tin']."'");
+				$dataSupervisor = dbarray($checkSupervisor);
 			?>
-			<td><small><?php echo strtoupper($value);?></small></td>
-			<?php 
-			$value="";
-			$checkIDS=dbquery("select * from teacher_ebackground where 	eback_teach_no='".$data['teach_no']."'");
-			while($dataIDS = dbarray($checkIDS)){ $value.=$dataIDS['eback_level'].": ".$dataIDS['eback_degree']."<br>";}
-			?>
-			<td><small><?php echo strtoupper($value);?></small></td>
-			<?php 
-			$value="";
-			$checkIDS=dbquery("select * from section where 	(section_adviser='".$data['teach_no']."' and section_sy='".$current_sy."')");
-			while($dataIDS = dbarray($checkIDS)){ $value.=$dataIDS['section_level']."- ".$dataIDS['section_name']."<br>";}
-			$checkIDS=dbquery("select * from teacherappointments where 	(teacherappointments_teach_no='".$data['teach_no']."' and teacherappointments_item_no='ANCILLARY' and teacherappointments_funding='0')");
-			while($dataIDS = dbarray($checkIDS)){ $value.=$dataIDS['teacherappointments_position']."<br>";}
-			?>
-			<td><small><?php echo strtoupper($value);?></small></td>
-			<?php 
-			$value="";
-			$checkIDS=dbquery("select * from class inner join prospectus on class_pros_no=pros_no where (class_user_name='".$data['teach_no']."' and class_sy='".$current_sy."')");
-			while($dataIDS = dbarray($checkIDS)){ $value.=$dataIDS['pros_title'].": ".$dataIDS['class_timeslots']." ".$dataIDS['class_days']."<br>";}
-			?>
-			<td><small><?php echo strtoupper($value);?></small></td>
+			<td><small><?php echo $dataSupervisor['teach_lname'] . ", " . $dataSupervisor['teach_fname'];?></small></td>
+
+			<td><small>-</small></td>
+
 		</tr>
 	<?php
 		$i++;
 		}	
 	}
 	?>
-		<tr> <td colspan="7" align="center">
-
-		</td></tr>
 	</tbody>
 </table>

@@ -19,7 +19,7 @@ if(isset($_GET['UpdateAnec']) && $_GET['UpdateAnec']=="Yes"){
 }
 
 if(isset($_GET['UpdateBiometricID']) && $_GET['UpdateBiometricID']=="Yes"){
-	$result1 = dbquery("UPDATE teacher SET teach_bio_no='".$_POST['teach_bio_no']."' WHERE teach_no='".$_POST['teach_no']."'");	
+	$result1 = dbquery("UPDATE teacher SET teach_bio_no='".$_POST['teach_bio_no']."', teach_tin='".$_POST['teach_tin']."' WHERE teach_no='".$_POST['teach_no']."'");	
 	header("Location: ".$_SERVER['HTTP_REFERER']);
 }
 ?>
