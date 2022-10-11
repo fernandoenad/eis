@@ -148,7 +148,7 @@ else{
 															$checkIfMissingLog = dbquery("select * from missinglogs	where (ml_userid='".$dataCurrentLogs['USERID']."' and ml_checkdate='$ml_checkdate' and ml_checktime='$ml_checktime' and ml_checktype='".$dataCurrentLogs['CHECKTYPE']."')");
 															$countIfMissingLog = dbrows($checkIfMissingLog);
 															$dataMissingLog = dbarray($checkIfMissingLog);
-															$checkApprover = dbquery("select * from teacher where teach_no='".$dataMissingLog['ml_approve_user_no']."'");
+															$checkApprover = dbquery("select * from teacher where teach_no='".(isset($dataMissingLog['ml_approve_user_no'])?$dataMissingLog['ml_approve_user_no']:1)."'");
 															$dataApprover = dbarray($checkApprover);
 															?>
 															<td><small><?php echo ($countIfMissingLog>0?$dataMissingLog['ml_reason']:""); ?></small>

@@ -150,10 +150,10 @@ else{
 			
 		<div class="col-lg-3 col-md-3">
 			<div class="panel panel-default">
-				<div class="panel-heading">Contact Number</div>
+				<div class="panel-heading">Barcode</div>
 				<div class="panel-body ">
-					<label class="control-label" for="learner_update_residence">Contact #</label>
-					<input type="number" id="learner_update_residence" name="teach_dialect" required="required" class=" form-control" value="<?php echo strtoupper($data['teach_dialect']); ?>" style="text-transform:uppercase;">
+					<label class="control-label" for="learner_update_residence">Barcode</label>
+					<input type="text" id="learner_update_residence" name="teach_dialect" required="required" class=" form-control" value="<?php echo strtoupper($data['teach_dialect']); ?>" style="text-transform:uppercase;">
 				</div>
 			</div>
 		</div>

@@ -23,6 +23,14 @@ $dataAnec = dbarray($resultAnec);
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
 					<div class="form-group">
+						<label class="control-label required" for="stud_lrn">Barcode <span title="Required" class="text-danger">*</span></label>
+						<input type="text" id="teach_dialect" name="teach_dialect"  required="required" class=" form-control" value="<?php echo $dataAnec['teach_dialect'];?>" style="text-transform:uppercase;">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<div class="form-group">
 						<label class="control-label required" for="stud_lrn">Supervisor <span title="Required" class="text-danger">*</span></label>
 						<select class="form-control" id="ui-classes" style="margin-top: 5px" name="teach_tin" required>
 							<option value="">---</value>
