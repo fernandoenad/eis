@@ -83,7 +83,9 @@ else{
 							<a title="Print Faculty List" class="btn  btn-xs  btn-default" onclick="window.open('teacherList.php?display=<?php echo (isset($_GET['display'])?$_GET['display']:""); ?>', 'newwindow', 'width=800, height=600'); return false;">
 								<span class="glyphicon glyphicon-print"></span></a>
 							<a title="Print Faculty Attendance Sheet" class="btn  btn-xs  btn-default" onclick="window.open('showForm2e.php?display=<?php echo (isset($_GET['display'])?$_GET['display']:""); ?>', 'newwindow', 'width=1024, height=600'); return false;">
-								<span class="glyphicon glyphicon-list"></span></a>	
+								<span class="glyphicon glyphicon-list"></span></a>
+							<a title="Print Barcode" class="btn  btn-xs  btn-default" onclick="window.open('showForm2ee.php?display=<?php echo (isset($_GET['display'])?$_GET['display']:""); ?>', 'newwindow', 'width=1024, height=600'); return false;">
+								<span class="glyphicon glyphicon-barcode"></span></a>		
 						</div>
                     </div>
 				</div>
