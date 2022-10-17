@@ -234,10 +234,12 @@ else{
 															<td><?php echo $data['teach_bio_no'];?></td>
 															<?php
 																$checkSupervisor = dbquery("SELECT * FROM teacher WHERE teach_no='".$data['teach_tin']."'");
+																$rowSupervisor = dbrows($checkSupervisor);
 																$dataSupervisor = dbarray($checkSupervisor);
+				
 															?>
 															<td><?php echo $data['teach_dialect'];?></td>
-															<td><?php echo $dataSupervisor['teach_lname'] . ", ". $dataSupervisor['teach_fname'];?></td>
+															<td><?php echo ($rowSupervisor > 0 ? $dataSupervisor['teach_lname'] . ", ". $dataSupervisor['teach_fname'] : "");?></td>
 															<td><a <?php echo ($_SESSION["user_role"]==2?"disabled":"");?> href="teacherBioIDUpdate.frm.php?teach_no=<?php echo $data['teach_no']; ?>" title="Update" data-toggle="modal" data-target="#modal-medium" data-backdrop="static" data-keyboard="false" class="btn  btn-xs  btn-default">
 																<span class="glyphicon glyphicon-pencil"></span></a></td>
 														</tr>
