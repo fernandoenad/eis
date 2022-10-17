@@ -1,5 +1,5 @@
 <?php
-backup_tables('localhost','root','03231979','sanhsmis');
+backup_tables('localhost','root','','sanhsmis');
 
 /* backup the db OR just a table */
 function backup_tables($host,$user,$pass,$name,$tables = '*')
