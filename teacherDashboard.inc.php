@@ -150,6 +150,7 @@ else{
 								
 								$disableDelete = ($countAdvisory>0 || $countClasses>0 || $countAppointments>0 || $countIDs>0 || $countBGround>0 || $countSALN>0 || $countAnec>0?"disabled":"");
 								?>
+								<a <?php echo ($_SESSION["userid"]==$data['teach_no']?"":($_SESSION["user_role"]==1 || $_SESSION["user_role"]==3?"":"disabled"));?> class="btn btn-default btn-xs" href="./?page=teacher&showProfile=<?php echo $data['teach_no'];  ?>&tab=ids"><span class="glyphicon glyphicon-user"></a>
 								<a <?php echo ($_SESSION["user_role"]!=1?"disabled":"");?> class="btn btn-danger btn-xs" <?php echo $disableDelete ;?> title="Delete a teacher profile. A teacher previously or currently assigned as adviser or subject teacher cannot be deleted." href="./teacher.scr.php?teach_no=<?php echo $data['teach_no'];?>&deleteUser=Yes"><span class="glyphicon glyphicon-remove" onClick="return Confirm('Are you sure you want to delete the choosed teacher profile? This action is irreversible.')"></span></a>
 								</td>
 							</tr>
