@@ -51,7 +51,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 $_SESSION['LAST_ACTIVITY'] = time();
 
 if(!isset($_GET['page'])){
-	header("Location: ./?page=class&enrol_sy=$current_sy");
+	header("Location: ./?page=teacher&teacher=yes&showProfile=".$_SESSION['userid']."&tab=ids");
 }
 	
 
