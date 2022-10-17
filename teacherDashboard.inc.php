@@ -178,8 +178,8 @@ else{
 							} 
 							else {
 								// echo "<li class='first'><a href='./?page=student&searchStudent=".$searchStudent."&pagenum=1'>First</a></li> ";
-								$previous = $pagenum-1;
-								echo "<li class='previous'><a href='./?page=teacher&searchStudent=".$searchStudent."&pagenum=$previous'>Previous</a></li>";
+								//$previous = $pagenum-1;
+								//echo "<li class='previous'><a href='./?page=teacher&searchStudent=".$searchStudent."&pagenum=$previous'>Previous</a></li>";
 							} 
 						
 							if ($pagenum == $last){
@@ -190,8 +190,8 @@ else{
 															
 							} 
 							else {
-								$next = $pagenum+1;
-								echo "<li class='next'><a href='./?page=teacher&searchStudent=".$searchStudent."&pagenum=$next'>Next</a></li>";
+								//$next = $pagenum+1;
+								//echo "<li class='next'><a href='./?page=teacher&searchStudent=".$searchStudent."&pagenum=$next'>Next</a></li>";
 								// echo "<li class='last'><a href='./?page=student&searchStudent=".$searchStudent."&pagenum=$last'>Last</a></li>";
 							}
 							?>
