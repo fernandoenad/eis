@@ -111,7 +111,7 @@ else{
 								<td class="text-right"><?php echo ($pagenum-1)* $page_rows  +$i; ?></td>
 								<!-- <td><a href="#" onclick="window.open('teachPass.php?teach_no=<?php echo $data['teach_no']; ?>', 'newwindow', 'width=700, height=500'); return false;"><?php echo $data['teach_id']; ?></a></td>-->
 								<td><a <?php echo ($_SESSION["userid"]==$data['teach_no']?"":($_SESSION["user_role"]==1 || $_SESSION["user_role"]==3?"":"disabled"));?> href="./?page=teacher&showProfile=<?php echo $data['teach_no'];  ?>&tab=ids"><?php echo $data['teach_id']; ?></a></td>
-								<td><small><?php echo strtoupper($data['teach_lname']).", ".strtoupper($data['teach_fname'])." ".strtoupper($data['teach_xname'])." ".strtoupper($data['teach_mname']); ?></small></td>
+								<td><small><?php echo strtoupper($data['teach_lname']).", ".strtoupper($data['teach_fname'])." ".strtoupper($data['teach_xname'])." ".strtoupper($data['teach_mname']); ?></small> /  <a href="#" onclick="window.open('teachPass.php?teach_no=<?php echo $data['teach_no']; ?>', 'newwindow', 'width=700, height=500'); return false;"> <span class="glyphicon glyphicon-barcode"></a></td>
 								<td><small><?php echo $data['teach_gender']; ?></small></td>
 								<?php
 									$selectAppointments = dbquery("SELECT * FROM teacherappointments WHERE (teacherappointments_teach_no='".$data['teach_no']."' and teacherappointments_item_no!='ANCILLARY' and teacherappointments_active='1') ORDER BY teacherappointments_date DESC LIMIT 1");
