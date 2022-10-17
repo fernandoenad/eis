@@ -90,7 +90,7 @@ else{
 							</div>
 							<div class="media-body">
 								<h3 class="media-heading"> <span style="font-size:25px;font-weight:normal"><?php echo strtoupper($data['teach_lname']).", ".strtoupper($data['teach_fname'])." ".strtoupper($data['teach_xname'])." ".strtoupper($data['teach_mname']); ?></h3>
-								<h5> <span class="glyphicon glyphicon-barcode"> <span style="font-size:13px;font-weight:normal"><?php echo $data['teach_id'];?></h5>
+								<h5> <a href="#" onclick="window.open('teachPass.php?teach_no=<?php echo $data['teach_no']; ?>', 'newwindow', 'width=700, height=500'); return false;"> <span class="glyphicon glyphicon-barcode"> <span style="font-size:13px;font-weight:normal"><?php echo $data['teach_id'];?></h5></a>
 								<h5> <span class="glyphicon glyphicon-credit-card"> <span style="font-size:13px;font-weight:normal"><?php echo $data['teach_tin'];?></h5>
 								<h5> <span class="glyphicon glyphicon-home"> <span style="font-size:13px;font-weight:normal"><?php echo $data['teach_residence'];?></h5>
 							</div>
