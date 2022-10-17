@@ -28,7 +28,7 @@ $dataStudent = dbarray($resultStudent);
 	</style>
 </head>	
 <table width="50" border="1" cellspacing="0">
-	<tr height="150">
+	<tr height="100">
 		<td align="center">
 			<h3>SDO Bohol EIS-DTR</h3>
 			<br>
