@@ -161,7 +161,9 @@ else{
 						?>
 							
 						</tbody>
+						<!--
 						<tr> <td colspan="8" align="center">Showing page <strong><?php echo $pagenum; ?></strong> out of <strong><?php echo $last; ?></strong>  page(s)...<br></td></tr>
+						-->
 					</table>
 												<ul class="pager">
 							<?php
