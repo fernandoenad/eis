@@ -17,6 +17,20 @@ else{
 
 
 		<div class="pagecontent container">
+			<div class="row row-toolbar">
+				<div class="col-lg-3 col-md-3 col-lg-push-9 col-md-push-9">
+					<div class="btn-group pull-right" style="margin-top: 5px;">
+						<form class="navbar-form navbar-right" method="post" action="./?page=teacher">
+							<div class="input-group">
+								<input type="text" name="searchStudent" class="form-control" placeholder="Search Personnel..." value="<?php echo (isset($_POST['searchStudent'])?$_POST['searchStudent']:""); ?>" autofocus>
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 			<div class="page-header" style="margin-top: 20px">
 				<h1>Personnel</h1>
 			</div>  

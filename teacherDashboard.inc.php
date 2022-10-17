@@ -15,7 +15,7 @@ else{
 		$pagenum = 1;
 	}
 	
-	$resultChk = dbquery("SELECT * FROM teacher WHERE (CONCAT(teach_lname,', ',teach_fname) LIKE '%".$searchStudent."%' OR teach_id LIKE '%".$searchStudent."%' OR teach_no LIKE '%".$searchStudent."%')  ORDER BY teach_lname ASC, teach_fname ASC");
+	$resultChk = dbquery("SELECT * FROM teacher WHERE (CONCAT(teach_lname,', ',teach_fname) LIKE '%".$searchStudent."%' OR teach_id LIKE '%".$searchStudent."%' OR teach_dialect LIKE '%".$searchStudent."%' OR teach_no LIKE '%".$searchStudent."%')  ORDER BY teach_lname ASC, teach_fname ASC");
 	$rowsChk = dbrows($resultChk);
 	$page_rows = 100;
 	$last = ceil($rowsChk/$page_rows); 
@@ -37,7 +37,7 @@ else{
 	else 
 		$filter =" AND teach_status='1'";
 
-	$result = dbquery("SELECT * FROM teacher WHERE ((CONCAT(teach_lname,', ',teach_fname) LIKE '%".$searchStudent."%' OR teach_id LIKE '%".$searchStudent."%' OR teach_no LIKE '%".$searchStudent."%') $filter)  ORDER BY teach_lname ASC, teach_fname ASC ".$max."");
+	$result = dbquery("SELECT * FROM teacher WHERE ((CONCAT(teach_lname,', ',teach_fname) LIKE '%".$searchStudent."%' OR teach_id LIKE '%".$searchStudent."%' OR teach_no LIKE '%".$searchStudent."%' OR teach_dialect LIKE '%".$searchStudent."%') $filter)  ORDER BY teach_lname ASC, teach_fname ASC ".$max."");
 	$rows = dbrows($result);
 
 
