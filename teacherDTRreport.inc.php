@@ -120,7 +120,7 @@ else{
 													}
 													$startStamp = $_GET['year']."-".$_GET['month']."-".$_GET['day'];
 													// $endStamp = $_GET['year']."-".$_GET['month']."-31 23:59:59";
-													$checkCurrentLogs = dbquery("select * from checkinout inner join teacher on USERID=teach_bio_no where ($filter YEAR(CHECKTIME)='".$_GET['year']."' and MONTH(CHECKTIME)='".$_GET['month']."' and DAY(CHECKTIME)='".$_GET['day']."') order by CHECKTIME ASC");
+													$checkCurrentLogs = dbquery("select * from checkinout inner join teacher on USERID=teach_bio_no where ($filter YEAR(CHECKTIME)='".$_GET['year']."' and MONTH(CHECKTIME)='".$_GET['month']."' and DAY(CHECKTIME)='".$_GET['day']."') order by CHECKTIME ASC limit 200");
 													while($dataCurrentLogs = dbarray($checkCurrentLogs)){
 													
 													?>
@@ -149,7 +149,8 @@ else{
 															$checkIfMissingLog = dbquery("select * from missinglogs	where (ml_userid='".$dataCurrentLogs['USERID']."' and ml_checkdate='$ml_checkdate' and ml_checktime='$ml_checktime' and ml_checktype='".$dataCurrentLogs['CHECKTYPE']."')");
 															$countIfMissingLog = dbrows($checkIfMissingLog);
 															$dataMissingLog = dbarray($checkIfMissingLog);
-															$checkApprover = dbquery("select * from teacher where teach_no='".$dataMissingLog['ml_approve_user_no']."'");
+															$approver = (isset($dataMissingLog['ml_approve_user_no'])?$dataMissingLog['ml_approve_user_no']:0);
+															$checkApprover = dbquery("select * from teacher where teach_no='".$approver."'");
 															$dataApprover = dbarray($checkApprover);
 															?>
 															<td><small><?php echo ($countIfMissingLog>0?$dataMissingLog['ml_reason']:""); ?></small>
