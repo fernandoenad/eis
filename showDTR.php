@@ -92,28 +92,28 @@ $dataTeacher = dbarray($checkTeacher);
 			<tr height="20">
 				<td align="center" style="BORDER-LEFT: black solid 1px; BORDER-BOTTOM: black solid 1px"><?php echo $i;?></td>
 				<?php
-				$startlog = $_GET['year']."-".$_GET['month']."-".$i." 00:00:00";
-				$endlog = $_GET['year']."-".$_GET['month']."-".$i." 11:59:59";
+				$startlog = $_GET['year']."-".$_GET['month']."-".$i." 04:00:00";
+				$endlog = $_GET['year']."-".$_GET['month']."-".$i." 10:00:00";
 				$checkAMIn = dbquery("select * from checkinout where (USERID='".$dataTeacher['teach_bio_no']."' and CHECKTYPE='I' and CHECKTIME between '$startlog' and '$endlog') order by CHECKTIME asc");
 				$dataAMIn = dbarray($checkAMIn );
 				?>
 				<td align="center" style="BORDER-LEFT: black solid 1px; BORDER-BOTTOM: black solid 1px"><?php echo (!isset($dataAMIn['CHECKTIME'])?"":date('g:ia', strtotime($dataAMIn['CHECKTIME'])));?></td>
 				<?php
-				$startlog = $_GET['year']."-".$_GET['month']."-".$i." 8:00:00";
+				$startlog = $_GET['year']."-".$_GET['month']."-".$i." 10:00:00";
 				$endlog = $_GET['year']."-".$_GET['month']."-".$i." 13:00:00";
 				$checkAMOut = dbquery("select * from checkinout where (USERID='".$dataTeacher['teach_bio_no']."' and CHECKTYPE='O' and CHECKTIME between '$startlog' and '$endlog') order by CHECKTIME desc");
 				$dataAMOut = dbarray($checkAMOut );
 				?>
 				<td align="center" style="BORDER-LEFT: black solid 1px; BORDER-BOTTOM: black solid 1px"><?php echo (!isset($dataAMOut['CHECKTIME'])?"":date('g:ia', strtotime($dataAMOut['CHECKTIME'])));?></td>
 				<?php
-				$startlog = $_GET['year']."-".$_GET['month']."-".$i." 12:30:00";
-				$endlog = $_GET['year']."-".$_GET['month']."-".$i." 16:59:59";
+				$startlog = $_GET['year']."-".$_GET['month']."-".$i." 10:00:00";
+				$endlog = $_GET['year']."-".$_GET['month']."-".$i." 15:00:00";
 				$checkPMIn = dbquery("select * from checkinout where (USERID='".$dataTeacher['teach_bio_no']."' and CHECKTYPE='I' and CHECKTIME between '$startlog' and '$endlog') order by CHECKTIME asc");
 				$dataPMIn = dbarray($checkPMIn );
 				?>
 				<td align="center" style="BORDER-LEFT: black solid 1px; BORDER-BOTTOM: black solid 1px"><?php echo (!isset($dataPMIn['CHECKTIME'])?"":date('g:ia', strtotime($dataPMIn['CHECKTIME'])));?></td>
 				<?php
-				$startlog = $_GET['year']."-".$_GET['month']."-".$i." 14:00:00";
+				$startlog = $_GET['year']."-".$_GET['month']."-".$i." 15:00:00";
 				$endlog = $_GET['year']."-".$_GET['month']."-".$i." 23:59:59";
 				$checkPMOut = dbquery("select * from checkinout where (USERID='".$dataTeacher['teach_bio_no']."' and CHECKTYPE='O' and CHECKTIME between '$startlog' and '$endlog') order by CHECKTIME desc");
 				$dataPMOut = dbarray($checkPMOut );

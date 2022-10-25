@@ -136,7 +136,7 @@ else{
 																$stateCurrent = ($dataCurrentLogs['CHECKTYPE']=="I"?"In":"Out");
 																$stateChange = ($dataCurrentLogs['CHECKTYPE']=="I"?"Out":"In");
 															?>
-																<a href="missinglogs.scr.php?ml_no=<?php echo $dataMissingLogsApp['ml_no'];?>&changeState=Yes&state=<?php echo $stateChange;?>&userid=<?php echo $dataCurrentLogs['USERID'];?>&checktime=<?php echo $dataCurrentLogs['CHECKTIME'];?>&checktype=<?php echo $dataCurrentLogs['CHECKTYPE'];?>" title="Change State"  onClick="return confirm('Are you sure you want to change the <?php echo $stateCurrent;?> state to the <?php echo $stateChange;?> state?')">
+																<a href="missinglogs.scr.php?changeState=Yes&state=<?php echo $stateChange;?>&userid=<?php echo $dataCurrentLogs['USERID'];?>&checktime=<?php echo $dataCurrentLogs['CHECKTIME'];?>&checktype=<?php echo $dataCurrentLogs['CHECKTYPE'];?>" title="Change State"  onClick="return confirm('Are you sure you want to change the <?php echo $stateCurrent;?> state to the <?php echo $stateChange;?> state?')">
 																<span class="glyphicon glyphicon-pencil"></span></a>
 															</td>
 															<td><small><?php echo date('g:ia', strtotime($dataCurrentLogs['CHECKTIME']));?></small></td>
