@@ -192,7 +192,7 @@ else{
 		<hr/>
 		<input type="hidden" name="teach_no" value="<?php echo $data['teach_no']; ?>">
 		<button type="submit" name="submit" id="submit" class="btn btn-primary pull-right"  onclick="return confirm('Are you sure you want to save the changes?')">Update</button>
-		<a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default">Back to Profile</a>
+		<a href="<?php echo (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ""); ?>" class="btn btn-default">Back to Profile</a>
 		<br/>
 	</form>
 
